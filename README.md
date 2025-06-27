@@ -109,15 +109,15 @@ By lowering the threshold, I catch more phishing sites but also create more fals
 by raising it, I eliminate false alarms at the cost of missing more phishing sites; 
 a middle-ground threshold (around 0.19) catches most phishing while keeping false alarms very low.
 ```
-## 📈 Example Model Training Output
+##  Example Model Training Output
 ```
-🔍 Shape   : (1992, 31)
-🟢 Legit   : 995
-🔴 Phish   : 997
-❓ Missing : False
-✔️  Trained — Classes: [-1  1]
-📊 Accuracy : 0.9449
-📋 Report   :
+ Shape   : (1992, 31)
+ Legit   : 995
+ Phish   : 997
+ Missing : False
+ Trained — Classes: [-1  1]
+ Accuracy : 0.9449
+ Report   :
                precision    recall  f1-score   support
 
           -1       0.95      0.94      0.95       216
@@ -130,7 +130,7 @@ Those 30 numbers get “scaled” so our model treats them fairly.
 A Random Forest classifier (think: a committee of decision-trees) looks at the pattern of +1/–1 and returns a probability that the site is phishing.
 ```
 
-## 🏗️ Project Structure
+##  Project Structure
 ```
 Smart-Phish-Buster/
 │
@@ -164,7 +164,7 @@ Smart-Phish-Buster/
 ├── README.md
 ```
 
-## 📝 Limitations & Future Work
+##  Limitations & Future Work
 Most phishing URLs are dead (normal in research)
 
 Occasional false positives on very long legit URLs (can be handled with more training data and whitelisting)
@@ -175,7 +175,7 @@ Deployment on cloud (Render/Heroku) and Chrome Web Store possible
 
 ---
 
-## 🚦 Quickstart
+##  Quickstart
 Install requirements
 ```bash
 python -m venv .venv
@@ -216,7 +216,7 @@ Start testing live URLs!
 
 ---
 
-## 📚 References
+##  References
 PhishTank
 
 Kaggle Web Page Phishing Detection
@@ -227,11 +227,11 @@ Flask
 
 ---
 
-## 🪪 License
+##  License
 MIT License
 
 ----
 
-## 💡 Questions or Issues?
+##  Questions or Issues?
 Open an issue, or contact me at wheesk122@gmail.com
 
