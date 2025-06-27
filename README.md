@@ -34,11 +34,11 @@ Workflow: ![workflow](images/workflow.png)
 
 - Phishing site warning: ![Phishing Verdict](images/phishing1.png)
 
-- Phishing site warning: ![Phishing Verdict](images/phishing1.png)
+- Phishing site warning2: ![Phishing Verdict](images/phishing2.png)
 
-- Feature extraction table/sample: ![Feature Extraction](./screenshot-features.png)
+- Postman: ![Postman](images/postman.png)
 
-- Model training results: ![Results](./screenshot-results.png)
+- Checking process: ![checking](images/checking.png)
 
 ---
 
