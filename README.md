@@ -5,7 +5,23 @@
 # Smart PhishBuster 
 
 A real-time phishing detection system combining a browser extension and a Python machine learning backend. Detects phishing attempts by analyzing suspicious URLs, webpage content, and user behavior—using an ML model trained on thousands of real-world examples.
+---
+# What does it do?
+Analyzes URLs and webpage features, predicts ‘legit’ or ‘phishing’,and displays a warning in the browser.
 
+It looks at the URL and the page behind it and pulls out 30 simple yes/no signals:
+
+“Does the address use an IP number instead of a name?”
+
+“Is it really long?”
+
+“Does it have weird JavaScript tricks?”
+
+“Is it on a shortener like bit.ly?”
+
+…and so on, up to “Is it known as malware by Google Safe Browsing?”
+
+Each signal becomes a +1 (yes) or –1 (no).
 ---
 
 ##  Features
@@ -36,7 +52,7 @@ Workflow: ![workflow](images/workflow.png)
 
 - Phishing site warning2: ![Phishing Verdict](images/phishing2.png)
 
-- Postman: ![Postman](images/postman.png)
+- API return: ![Postman](images/postman.png)
 
 - Checking process: ![checking](images/checking.png)
 
@@ -47,7 +63,7 @@ Workflow: ![workflow](images/workflow.png)
 Clone the repo and set up a virtual environment:
 
 ```bash 
-git clone <repo-url>
+git clone https://github.com/Wheesk/smart_phishbuster.git
 cd smart-phishbuster
 python -m venv .venv
 
@@ -79,9 +95,21 @@ Threshold	Precision	Recall
 0.98	    1.00    	0.81
 1.00	    1.00    	0.76
 
-Lower thresholds catch more phishing attempts (higher recall), while higher thresholds reduce false positives (higher precision). Choose based on your risk preference.
-```
+Very low threshold (e.g. 0.00–0.06) Recall=100% →  catches every phishing URL.
+Precision low (50–70%) → but half (or more) of “phishing” alerts are false alarms.
 
+Mid-range threshold (e.g. 0.19)Recall ≈ 96% → catches almost every phish.
+Precision ≈ 94% → and over nine out of ten of alerts are real phishing.
+
+High threshold (e.g. 0.85–0.99)
+Precision=100% → when you say “phishing,” you’re never wrong.
+Recall drops to 83–57% → misses a lot of real phishing sites.
+
+In summary:
+By lowering the threshold, I catch more phishing sites but also create more false alarms; 
+by raising it, I eliminate false alarms at the cost of missing more phishing sites; 
+a middle-ground threshold (around 0.19) catches most phishing while keeping false alarms very low.
+```
 ## 📈 Example Model Training Output
 ```
 🔍 Shape   : (1992, 31)
@@ -98,6 +126,9 @@ Lower thresholds catch more phishing attempts (higher recall), while higher thre
 
     accuracy                           0.94       399
 
+Those 30 numbers get “scaled” so our model treats them fairly.
+
+A Random Forest classifier (think: a committee of decision-trees) looks at the pattern of +1/–1 and returns a probability that the site is phishing.
 ```
 
 ## 🏗️ Project Structure
@@ -106,20 +137,21 @@ Smart-Phish-Buster/
 │
 ├── backend/
 │   ├── app.py
-│   ├── train.py
 │   ├── generate_features.py
 │   ├── threshold_tuning.py
 │   ├── url_features.py
 │   ├── model_loader.py
-│   └── model/
+│   
+│─── model/
 │       ├── phishing_model.pkl
 │       ├── scaler.pkl
 │       └── feature_names.txt
-│
+│       └── train_model.py
 ├── data/
 │   ├── PhiUSIIL_Phishing_URL_Dataset.csv
 │   ├── full_feature_dataset.csv
 │   └── balanced_dataset.csv
+│   └── balance_dataset.py
 │
 ├── extension/
 │   ├── manifest.json
@@ -128,9 +160,6 @@ Smart-Phish-Buster/
 │   ├── popup.js
 │   └── icon.png
 │
-├── tests/
-│   ├── test_app.py
-│   └── test_url_features.py
 │
 ├── requirements.txt
 ├── README.md
