@@ -1,4 +1,3 @@
-# url_features.py
 import re
 import os
 from dotenv import load_dotenv
@@ -57,13 +56,13 @@ def fetch_external_scores(host, url):
         f2 = ex.submit(get_backlink_score, host)
         f3 = ex.submit(get_openpagerank_score, host)
         f4 = ex.submit(cached_safe_browsing, url)
-        # wait for all, with a short timeout so we don’t hang
+        
         traffic     = f1.result(timeout=2)
         backlink    = f2.result(timeout=2)
         opr         = f3.result(timeout=2)
         safe_sb     = f4.result(timeout=2)
 
-    # Google‐index search: do this inline (or you can parallelize it too)
+    
     try:
         g = requests.get(
             f"https://www.google.com/search?q=site:{host}",

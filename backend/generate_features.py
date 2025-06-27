@@ -1,5 +1,3 @@
-# generate_features.py
-
 import pandas as pd
 import time
 import os
@@ -25,7 +23,6 @@ data_dir   = os.path.join(root_dir, "data")
 input_csv  = os.path.join(data_dir, "balanced_dataset_spaced.csv")
 output_csv = os.path.join(data_dir, "full_feature_dataset.csv")
 
-# Make sure the output directory exists
 os.makedirs(os.path.dirname(output_csv), exist_ok=True)
 
 # === 3) Load raw dataset ===
@@ -54,7 +51,6 @@ for idx, row in df.iterrows():
             skip_count += 1
             continue
 
-        # ensure label is integer
         try:
             label = int(str(raw_label).strip())
         except:

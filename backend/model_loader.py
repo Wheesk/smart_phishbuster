@@ -9,7 +9,7 @@ def load_model_and_scaler():
         model = joblib.load(os.path.join(MODEL_DIR, 'phishing_model.pkl'))
         scaler = joblib.load(os.path.join(MODEL_DIR, 'scaler.pkl'))
     except Exception as e:
-        raise FileNotFoundError(f"❌ Model or scaler file missing: {e}")
+        raise FileNotFoundError(f"❌ Model or a scaler file missing: {e}")
 
     return model, scaler
 
