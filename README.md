@@ -199,6 +199,9 @@ Generate features, train the model
 ```bash
 cd backend
 python generate_features.py
+```
+```bash
+cd model
 python train.py
 ```
 Run backend
