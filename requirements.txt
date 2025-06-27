@@ -1,0 +1,11 @@
+Flask
+gunicorn
+scikit-learn
+pandas
+joblib
+requests
+beautifulsoup4
+python-whois
+tldextract
+python-dotenv
+pytest
