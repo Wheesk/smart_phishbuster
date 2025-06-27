@@ -5,6 +5,10 @@
 # Smart PhishBuster 
 
 A real-time phishing detection system combining a browser extension and a Python machine learning backend. Detects phishing attempts by analyzing suspicious URLs, webpage content, and user behavior—using an ML model trained on thousands of real-world examples.
+
+Note:
+While Smart PhishBuster uses advanced techniques to detect phishing attempts in real time, it does not guarantee 100% accuracy. Like all security tools, it may occasionally produce false positives or miss certain threats.
+Use at your own risk, and always double-check before entering sensitive information.
 ---
 # What does it do?
 Analyzes URLs and webpage features, predicts ‘legit’ or ‘phishing’,and displays a warning in the browser.
