@@ -1,4 +1,4 @@
-<img src="./logo.png" alt="Smart PhishBuster Logo" width="180"/>
+<img src="images/logo.png" alt="Smart PhishBuster Logo" width="180"/>
 
 
 # Smart PhishBuster 
