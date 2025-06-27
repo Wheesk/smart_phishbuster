@@ -34,7 +34,7 @@ Workflow: ![workflow](images/workflow.png)
 
 - Phishing site warning: ![Phishing Verdict](images/phishing1.png)
 
-- Backend API JSON response: ![API Response](./screenshot-api-response.png)
+- Phishing site warning: ![Phishing Verdict](images/phishing1.png)
 
 - Feature extraction table/sample: ![Feature Extraction](./screenshot-features.png)
 
