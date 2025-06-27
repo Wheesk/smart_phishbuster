@@ -44,7 +44,6 @@ Workflow: ![workflow](images/workflow.png)
 ##   Screenshots
 
 
-- Add your own screenshots here after uploading:
 
 - Legitimate site verdict: ![Legit Verdict](images/legit.png)
 
