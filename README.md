@@ -1,10 +1,14 @@
-# Smart PhishBuster 🛡️
+![logo](images/logo.png)
+
+
+
+# Smart PhishBuster 
 
 A real-time phishing detection system combining a browser extension and a Python machine learning backend. Detects phishing attempts by analyzing suspicious URLs, webpage content, and user behavior—using an ML model trained on thousands of real-world examples.
 
 ---
 
-## 🚦 Features
+##  Features
 
 - 30+ feature extraction from URLs, domain info, and page content
 - Random Forest classifier (95% accuracy, balanced precision/recall)
@@ -16,48 +20,70 @@ A real-time phishing detection system combining a browser extension and a Python
 
 ---
 
-## 🗺️ **Workflow Overview**
+##  **Workflow Overview**
 
-```mermaid
-flowchart LR
-    A([Start]) --> B[User visits website]
-    B --> C[Extension captures URL]
-    C --> D[Send URL to backend API]
-    D --> E{Is domain in whitelist?}
-    E -- Yes --> F[Label as "legit" and show result]
-    E -- No --> G[Extract URL + content features]
-    G --> H[Run ML model (RandomForest)]
-    H --> I{Phishing probability > threshold?}
-    I -- Yes --> J[Label as "phishing"]
-    I -- No --> K[Label as "legit"]
-    J --> L[Display warning in extension]
-    K --> F
-    F --> M([End])
-    L --> M
+Workflow: ![workflow](images/workflow.png)
+---
+
+##   Screenshots
 
 
+- Add your own screenshots here after uploading:
 
+- Legitimate site verdict: ![Legit Verdict](images/legit.png)
 
-- ~2000 labeled URLs (1,000 phishing, 1,000 legit)
-- Random Forest classifier, 95% accuracy on test set
-- Real-world phishing detection with browser extension integration
+- Phishing site warning: ![Phishing Verdict](images/phishing1.png)
 
+- Backend API JSON response: ![API Response](./screenshot-api-response.png)
 
-## ⚡ Installation
-Clone the repo and set up a virtual environment
-```bash
-git clone 
+- Feature extraction table/sample: ![Feature Extraction](./screenshot-features.png)
+
+- Model training results: ![Results](./screenshot-results.png)
+
+---
+
+##  Installation
+
+Clone the repo and set up a virtual environment:
+
+```bash 
+git clone <repo-url>
 cd smart-phishbuster
 python -m venv .venv
+
 # Windows:
 .venv\Scripts\activate
+
 # macOS/Linux:
 source .venv/bin/activate
 
 pip install -r requirements.txt
+```
 
+##  Threshold Tuning
+Model performance can be tuned by selecting a different decision threshold. Here are precision/recall values at various thresholds:
+```bash
+Threshold	Precision	Recall
+0.00	    0.50	    1.00
+0.01    	0.67     	1.00
+0.02	    0.69    	0.99
+0.04	    0.75	    0.99
+0.07    	0.90	    0.98
+0.11	    0.92    	0.98
+0.14	    0.94    	0.98
+0.32	    0.97    	0.97
+0.68	    0.99    	0.94
+0.87	    0.99    	0.93
+0.90	    0.99    	0.89
+0.93	    1.00    	0.86
+0.98	    1.00    	0.81
+1.00	    1.00    	0.76
+
+Lower thresholds catch more phishing attempts (higher recall), while higher thresholds reduce false positives (higher precision). Choose based on your risk preference.
+```
 
 ## 📈 Example Model Training Output
+```
 🔍 Shape   : (1992, 31)
 🟢 Legit   : 995
 🔴 Phish   : 997
@@ -72,8 +98,10 @@ pip install -r requirements.txt
 
     accuracy                           0.94       399
 
+```
 
 ## 🏗️ Project Structure
+```
 Smart-Phish-Buster/
 │
 ├── backend/
@@ -106,9 +134,9 @@ Smart-Phish-Buster/
 │
 ├── requirements.txt
 ├── README.md
+```
 
-
-##📝 Limitations & Future Work
+## 📝 Limitations & Future Work
 Most phishing URLs are dead (normal in research)
 
 Occasional false positives on very long legit URLs (can be handled with more training data and whitelisting)
@@ -117,7 +145,50 @@ Can integrate real-time feeds (PhishTank/OpenPhish) for even fresher data
 
 Deployment on cloud (Render/Heroku) and Chrome Web Store possible
 
-##📚 References
+---
+
+## 🚦 Quickstart
+Install requirements
+```bash
+python -m venv .venv
+```
+#
+ Windows:
+```
+.venv\Scripts\activate
+```
+ macOS/Linux:
+```
+source .venv/bin/activate
+```
+```
+pip install -r requirements.txt
+```
+Generate features, train the model
+
+```bash
+cd backend
+python generate_features.py
+python train.py
+```
+Run backend
+
+```bash
+python app.py
+```
+Load extension in Chrome
+
+Go to chrome://extensions
+
+Enable "Developer Mode"
+
+Click "Load unpacked" and select the extension folder
+
+Start testing live URLs!
+
+---
+
+## 📚 References
 PhishTank
 
 Kaggle Web Page Phishing Detection
@@ -126,20 +197,13 @@ scikit-learn docs
 
 Flask
 
-##🪪 License
+---
+
+## 🪪 License
 MIT License
 
-##🚦 Quickstart
-Install requirements
+----
 
-Generate features, train the model
-
-Run backend (python app.py)
-
-Load extension in Chrome
-
-Start testing live URLs!
-
-##💡 Questions or Issues?
-Open an issue, or contact me at [wheesk122@gmail.com]
+## 💡 Questions or Issues?
+Open an issue, or contact me at wheesk122@gmail.com
 
