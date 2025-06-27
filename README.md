@@ -176,7 +176,9 @@ Deployment on cloud (Render/Heroku) and Chrome Web Store possible
 ---
 
 ##  Quickstart
-Install requirements
+```bash
+Install requirements.txt
+```
 ```bash
 python -m venv .venv
 ```
