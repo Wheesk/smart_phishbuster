@@ -3,8 +3,6 @@ import os
 import sys
 import traceback
 
-# ─── Make backend/ importable ───────────────────────────────────────────────────
-# Get project root (folder containing this script)
 project_root = os.path.dirname(os.path.abspath(__file__))
 
 # 1) Add project root to path so 'import backend.app' works
@@ -12,16 +10,16 @@ sys.path.insert(0, project_root)
 # 2) Also add backend/ itself so 'import model_loader' inside backend/app.py works
 sys.path.insert(0, os.path.join(project_root, 'backend'))
 
-# ─── Now import your modules ───────────────────────────────────────────────────
+# Now import your modules 
 from backend.url_features import extract_features_from_url, EXPECTED_FEATURE_COUNT
 from backend.app import app
 
-# ─── Simple assertion helper ───────────────────────────────────────────────────
+#Simple assertion helper 
 def check(cond, msg):
     if not cond:
         raise AssertionError(msg)
 
-print("▶️  Testing url_features.extract_features_from_url")
+print("Testing url_features.extract_features_from_url")
 
 # Test 1: IP-based URL
 feats = extract_features_from_url("http://192.168.0.1/login")
@@ -42,9 +40,9 @@ check(isinstance(feats_bad, list), "Should still return a list")
 check(len(feats_bad) == EXPECTED_FEATURE_COUNT,
       "Should still return full-length vector on failure")
 
-print("✔️  url_features tests passed.\n")
+print("url_features tests passed.\n")
 
-print("▶️  Testing backend.app /predict endpoint")
+print("Testing backend.app /predict endpoint")
 client = app.test_client()
 
 # Missing URL
@@ -70,5 +68,5 @@ check(data["url"] == test_url, "Response URL mismatch")
 check(0.0 <= data["phishing_probability"] <= 1.0, "Probability must be between 0 and 1")
 print(f"  • Phish URL → 200 OK, probability = {data['phishing_probability']}")
 
-print("✔️  /predict endpoint tests passed.\n")
-print("🎉 All manual tests passed!")
+print("/predict endpoint tests passed.\n")
+print("All manual tests passed!")
