@@ -10,7 +10,7 @@ sys.path.insert(0, project_root)
 # 2) Also add backend/ itself so 'import model_loader' inside backend/app.py works
 sys.path.insert(0, os.path.join(project_root, 'backend'))
 
-# Now import your modules 
+#  import your modules 
 from backend.url_features import extract_features_from_url, EXPECTED_FEATURE_COUNT
 from backend.app import app
 
