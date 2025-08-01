@@ -10,12 +10,6 @@ logger = logging.getLogger(__name__)
 
 app = Flask(__name__)
 
-# load model & scaler
-model, scaler = load_model_and_scaler()
-model, scaler = load_model_and_scaler()
-expected = load_feature_names()
-if expected is None:
-    raise RuntimeError("feature_names.txt not found in model/")
 
 # load feature names
 model, scaler = load_model_and_scaler()
