@@ -12,7 +12,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // 2) Show a loading message
     status.textContent = 'Checking ' + url + ' …';
 
-    // 3) Call your backend directly from the popup
+    // 3) Call backend directly from the popup
     fetch('http://localhost:5000/predict', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
