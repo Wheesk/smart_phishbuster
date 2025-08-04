@@ -43,7 +43,7 @@ for idx, row in df.iterrows():
         skip_count += 1
         continue
 
-    print(f"[{idx+1}/{len(df)}] 🔍 Extracting: {url}")
+    print(f"[{idx+1}/{len(df)}]  Extracting: {url}")
     try:
         features = extract_features_from_url(url)
         if len(features) != len(FEATURE_NAMES):
