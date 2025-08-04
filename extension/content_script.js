@@ -10,7 +10,7 @@ chrome.runtime.onMessage.addListener((msg, sender, sendResponse) => {
       // Save result to chrome.storage for popup
       chrome.storage.local.set({ lastResult: data });
       // Optionally update badge
-      chrome.action.setBadgeText({ text: data.result === 'phishing' ? '⚠️' : '' });
+      chrome.action.setBadgeText({ text: data.result === 'phishing' ? '' : '' });
     })
     .catch(err => console.error('API error', err));
   }
