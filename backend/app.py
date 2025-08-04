@@ -15,7 +15,7 @@ app = Flask(__name__)
 model, scaler = load_model_and_scaler()
 expected_features = load_feature_names()
 if expected_features is None:
-    raise RuntimeError("❌ feature_names.txt not found in model/")
+    raise RuntimeError(" feature_names.txt not found in model/")
 WHITELIST = ["google.com", "github.com", "stackoverflow.com", "booking.com", "kayak.com"]
 
 @app.route('/predict', methods=['POST'])
