@@ -31,4 +31,4 @@ with open(output_csv, 'w', newline='', encoding='utf-8') as f:
     for url, label in balanced.values:
         writer.writerow([url, f' {label}'])
 
-print(f'✅ Saved to {output_csv}.')
+print(f' Saved to {output_csv}.')
